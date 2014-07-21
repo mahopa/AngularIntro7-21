@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app>
+<head>
+    <title></title>
+</head>
+<body>
+    <div data-ng-controller="FirstController">
+        <input type="text" data-ng-model="name" /><br />
+        <input type="text" data-ng-model="mood" />
+        <button data-ng-click="addCat(name, mood)">
+            Add Cat
+        </button>
+        <div id="catHolder">
+            <table>
+                <tr data-ng-repeat="(key, cat) in cats">
+                    <td ng-hide="editing">{{cat.name}}</td>
+                    <td ng-hide="editing">{{cat.mood}}</td>
+                    <td ng-show="editing">
+                        <input type="text" ng-model="cat.name" />
+                    </td>
+                    <td ng-show="editing">
+                        <input type="text" ng-model="cat.mood" />
+                    </td>
+                    <td ng-hide="editing">
+                        <button ng-click="deleteCat(cat)">Delete</button>
+                        <button ng-click="editing=true">Edit</button>
+                        <button ng-click="sendCat(cat)">Cat-a-pult</button>
+                    </td>
+                    <td ng-show="editing">
+                        <button ng-click="editing=false">Save</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/_Script.js"></script>
+</body>
+</html>
